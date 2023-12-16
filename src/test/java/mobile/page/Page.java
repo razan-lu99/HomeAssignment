@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import javax.lang.model.element.Element;
 
-public class BookPage extends MobileBaseTest {
+public class Page extends MobileBaseTest {
 
-    public BookPage(AppiumDriver appiumDriver) {
+    public Page(AppiumDriver appiumDriver) {
         PageFactory.initElements(appiumDriver, this);
     }
 

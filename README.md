@@ -12,7 +12,8 @@ This is a solution for Web App Testing and Mobile App Testing.
 <h4>How to execute tests:</h4>
 1. When creating a project, create it as Maven.<br>
 2. After creating a Maven project go to https://mvnrepository.com/ and search for needed libraries, ex. Selenium Java, TestNG. Paste in pom.xml file<br>
-3. Run BookTest.java class
+3. Fix up the desired browser from BaseTest.java class<br>
+4. Run BookTest.java class
 
 <h4>For the Web App Testing, these are the included files:</h4>
 1. BaseTest.java<br>
@@ -38,7 +39,8 @@ This is a solution for Web App Testing and Mobile App Testing.
 1. When creating a project, create it as Maven.<br>
 2. After creating a Maven project go to https://mvnrepository.com/ and search for needed libraries, ex. Selenium Java, TestNG, Java Client. Paste in pom.xml file<br>
 3. Start the Appium Server and Appium Inspector with the correct capabilities<br>
-4. Run WeatherTest.java class
+4. Fix up the desired capabilities from res.properties file<br>
+5. Run WeatherTest.java class
 
 <h4>For the Mobile App Testing, these are the included files:</h4>
 1. MobileBaseTest.java<br>

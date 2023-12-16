@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import javax.lang.model.element.Element;
 
-public class Page extends MobileBaseTest {
+public class WeatherPage extends MobileBaseTest {
 
-    public Page(AppiumDriver appiumDriver) {
+    public WeatherPage(AppiumDriver appiumDriver) {
         PageFactory.initElements(appiumDriver, this);
     }
 

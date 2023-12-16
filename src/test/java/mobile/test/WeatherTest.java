@@ -2,7 +2,7 @@ package mobile.test;
 
 import base.MobileBaseTest;
 
-public class Test extends MobileBaseTest {
+public class WeatherTest extends MobileBaseTest {
 
 
 

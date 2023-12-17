@@ -6,8 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.util.Properties;
-
 public class BaseTest {
 
 
@@ -15,8 +13,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        Properties properties = new Properties();
-            String browser = System.getProperty("browser", properties.getProperty("browser")).toLowerCase();
+            String browser = System.getProperty("browser", "chrome").toLowerCase();
 
             if (browser.equals("firefox")){
                 System.getProperty("webdriver.gecko.driver", "C:\\Program Files\\firefox.exe");

@@ -19,11 +19,11 @@ public class MobileBaseTest {
     @BeforeMethod
     public void  setUp() throws IOException {
         Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Jeeny Jordan\\IdeaProjects\\JeenyPassengerAndroid\\src\\main\\resources\\hms.properties");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Jeeny Jordan\\IdeaProjects\\HomeAssignment\\src\\main\\resources\\res.properties");
         properties.load(fileInputStream);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, properties.getProperty("platformName"));
+        capabilities.setCapability(MobileCapabilityType.PLATFORM, properties.getProperty("platformName"));
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, properties.getProperty("deviceName"));
         capabilities.setCapability(MobileCapabilityType.APP, properties.getProperty("app"));
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, properties.getProperty("platformVersion"));

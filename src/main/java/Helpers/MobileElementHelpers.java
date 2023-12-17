@@ -6,12 +6,14 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 import static base.MobileBaseTest.driver;
 
 public class MobileElementHelpers {
 
     private static final int waitInSeconds = 20;
-    static WebDriverWait wait = new WebDriverWait(driver, waitInSeconds);
+    static WebDriverWait wait = new WebDriverWait(driver, 10);
 
     public static void elementToBeVisible(AndroidElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));

@@ -19,7 +19,7 @@ public class MobileBaseTest {
     @BeforeMethod
     public void  setUp() throws IOException {
         Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Jeeny Jordan\\IdeaProjects\\HomeAssignment\\src\\main\\resources\\res.properties");
+        FileInputStream fileInputStream = new FileInputStream("\\src\\main\\resources\\res.properties");
         properties.load(fileInputStream);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

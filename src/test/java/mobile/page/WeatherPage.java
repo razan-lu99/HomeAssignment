@@ -41,22 +41,16 @@ public class WeatherPage {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.TextView[1]")
     private AndroidElement twelveBtn;
 
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView")
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView")
     private AndroidElement times;
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView")
-    private List<AndroidElement> firstFiveRainChance;
+    private List<AndroidElement> rainChance;
 
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView")
-    private AndroidElement sixthRainChance;
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView")
+    private List<AndroidElement> humidity;
 
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView")
-    private List<AndroidElement> firstFiveHumidity;
-
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[5]/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView")
-    private AndroidElement sixthHumidity;
-    
-    @AndroidFindBy(xpath = "//android.widget.RelativeLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.HorizontalScrollView/android.widget.LinearLayout")
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.HorizontalScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[3]")
     private AndroidElement elementToScroll;
 
     public boolean setWeatherUnit(){
@@ -72,7 +66,7 @@ public class WeatherPage {
             this.allowLocationOnForeground.click();
         }
         elementToBeVisible(this.currentUnit);
-        return this.currentUnit.getText().contains("F");
+        return this.currentUnit.getText().toLowerCase().contains("f");
     }
 
     public boolean setTimeFormat(){
@@ -88,7 +82,14 @@ public class WeatherPage {
             this.allowLocationOnForeground.click();
         }
         elementToBeVisible(this.times);
-        return this.times.getText().contains("am") || this.times.getText().contains("pm");
+
+        System.out.println(this.times.getText());
+
+        if (this.times.getText().toLowerCase().contains("am") || this.times.getText().toLowerCase().contains("pm")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean iconCheck(){
@@ -100,15 +101,14 @@ public class WeatherPage {
         if (this.allowLocationOnForeground.isDisplayed()) {
             this.allowLocationOnForeground.click();
         }
+        waitForTime(3000);
         elementToBeVisible(this.elementToScroll);
-        int elementX = this.elementToScroll.getLocation().getX();
-        swipeElementLeft(elementX, elementToScroll);
-        waitForTime(1000);
-        this.firstFiveRainChance.add(this.sixthRainChance);
-        this.firstFiveHumidity.add(this.sixthHumidity);
+        swipeByCoordinates(950, 1200, 820, 1200);
+
         boolean checkThem = false;
+        System.out.println(this.humidity.get(0).getText());
         for (int i = 0 ; i < 6 ; i++){
-            if (this.firstFiveRainChance.get(i).getText().contains("%") && this.firstFiveHumidity.get(i).getText().contains("%")){
+            if (this.rainChance.get(i).getText().contains("%") && this.humidity.get(i).getText().contains("%")){
                 checkThem = true;
             }
         }
